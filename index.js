@@ -1,4 +1,4 @@
-const app = require('../../app');
+const app = require('express')();
 const socket = require('http').createServer(app);
 
 const {
@@ -27,7 +27,7 @@ const io = require('socket.io')(socket, {
   }
 });
 
-io.on(CONNECTION , async socket => {
+io.on('connection' , async socket => {
   socket.emit(CONNECTION, 'connected to chat');
 
   socket.on( JOIN_ROOM, async ({ roomId, ...currentUser }) => {
