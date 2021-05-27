@@ -7,7 +7,7 @@ const {
   getRoomUsernames,
   getActiveUserRooms,
   getActiveRooms
-} = require('./utils');
+} = require('./event-services');
 
 const {
   CONNECTION,
