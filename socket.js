@@ -46,8 +46,8 @@ io.on('connection' , async socket => {
         message: 'Joined The Room', username: currentUser.username
       });
 
-      io.to(roomId).emit( USER_JOINED, { users });
-      io.to(roomId).emit( JOIN_ROOM , {
+      io.to(roomId).emit(USER_JOINED, { users });
+      io.to(roomId).emit(JOIN_ROOM , {
         users,
         roomId,
         ...userThatJoined
