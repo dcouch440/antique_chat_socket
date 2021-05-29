@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "sh ./shell/setenv.sh && nodemon index.js"
+    "start": "nodemon index.js"
   },
   "engines": {
     "node": "12.18.1"
