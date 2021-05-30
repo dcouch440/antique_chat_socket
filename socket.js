@@ -1,5 +1,6 @@
 const app = require('./app');
 const socket = require('http').createServer(app);
+const corsConfig = require('./config/cors.config');
 
 const {
   getUsersFromDB,
@@ -17,20 +18,14 @@ const {
   DISCONNECT,
   DISCONNECTION,
   SHOW_ROOM_USER_COUNT
-} = require('./socket-events');
+} = require('./constant/socket-events');
 
-const io = require('socket.io')(socket, {
-  cors: {
-    origin: 'https://radiant-thicket-98181.herokuapp.com',
-    methods: ['GET', 'POST'],
-    credentials: true
-  }
-});
+const io = require('socket.io')(socket, { cors: corsConfig });
 
-io.on('connection' , async socket => {
+io.on('connection', async socket => {
   socket.emit(CONNECTION, 'connected to chat');
 
-  socket.on( JOIN_ROOM, async ({ roomId, ...currentUser }) => {
+  socket.on(JOIN_ROOM, async ({ roomId, ...currentUser }) => {
     try {
       if (!roomId) {
         return;
