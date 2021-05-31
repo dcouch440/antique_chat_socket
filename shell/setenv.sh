@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-DATABASE_URL=$(heroku config:get DATABASE_URL -a radiant-thicket-98181)
+heroku config:set DATABASE_URL=$(heroku config:get DATABASE_URL -a radiant-thicket-98181)
