@@ -1,8 +1,8 @@
-const Antique = require('./antique.model');
+const db = require('../../db');
 
 class AntiqueDAO {
   findAntiquesByUserId (user_id) {
-    return Antique.query()
+    return db('antique')
       .where('user_id', user_id);
   }
 }

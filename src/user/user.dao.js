@@ -1,12 +1,12 @@
-const User = require('./user.model');
+const db = require('../../db');
 
 class UserDAO {
   getUsersByUsername (usernames) {
-    return User.query()
+    return db('user')
       .where(builder => builder.whereIn('username', usernames));
   }
   getUserByUsername (username) {
-    return User.query()
+    return db('user')
       .where('username', username)
       .first();
   }
