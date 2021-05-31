@@ -18,7 +18,7 @@ const {
   DISCONNECT,
   DISCONNECTION,
   SHOW_ROOM_USER_COUNT
-} = require('./constant/socket-events');
+} = require('./events');
 
 const io = require('socket.io')(socket, { cors: corsConfig });
 
