@@ -1,6 +1,4 @@
-const db = require('./db');
-const { Model } = require('objection');
+require('./db');
 const app = require('express')();
-Model.knex(db);
 
 module.exports = app;
