@@ -1,5 +1,5 @@
 const app = require('./app');
-const socket = require('http').createServer(app);
+const server = require('http').createServer(app);
 const corsConfig = require('./config/cors.config');
 
 const {
@@ -20,7 +20,7 @@ const {
   SHOW_ROOM_USER_COUNT
 } = require('./events');
 
-const io = require('socket.io')(socket, { cors: corsConfig });
+const io = require('socket.io')(server, { cors: corsConfig });
 
 io.on('connection', async socket => {
   socket.emit(CONNECTION, 'connected to chat');
@@ -32,11 +32,9 @@ io.on('connection', async socket => {
       }
       socket.username = currentUser.username;
       socket.join(roomId);
-
       const users = await getUsersFromDB(
         getRoomUsernames({ io, roomId })
       );
-
       const userThatJoined = await messageWithAttachedUser({
         message: 'Joined The Room', username: currentUser.username
       });
@@ -53,7 +51,7 @@ io.on('connection', async socket => {
           const messageData = await messageWithAttachedUser({
             message, username: currentUser.username
           });
-          io.to(roomId).emit( 'message', messageData);
+          io.to(roomId).emit('message', messageData);
         } catch (err) {
           console.error(err);
         }
@@ -102,4 +100,4 @@ io.on('connection', async socket => {
 
 });
 
-module.exports = socket;
+module.exports = server;
