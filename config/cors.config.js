@@ -1,7 +1,7 @@
 const envUrl = require('../lib/env-url');
 
 const origin = envUrl({
-  localhost:3001,
+  localhost: 3001,
   production: 'https://radiant-thicket-98181.herokuapp.com'
 });
 
