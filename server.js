@@ -22,7 +22,7 @@ const {
 
 const io = require('socket.io')(server, { cors: corsConfig });
 
-io.on('connection', async socket => {
+io.on(CONNECTION, async socket => {
   socket.emit(CONNECTION, 'connected to chat');
 
   socket.on(JOIN_ROOM, async ({ roomId, ...currentUser }) => {
