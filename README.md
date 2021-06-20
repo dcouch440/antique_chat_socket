@@ -18,11 +18,12 @@ This app requires shared postgres server access
   - express `^4.17.1`
   - knex `^0.95.6`
   - nodemon `^2.0.7`
-  - objection `^2.2.15`
   - pg `^8.6.0`
   - socket . io `^4.1.2`
   
 ## `Install`
+
+#### `Git`
 Download this file by either download the zip file or cloning the repo
 
 - click on the green "code" button while viewing this from github
@@ -32,13 +33,13 @@ Download this file by either download the zip file or cloning the repo
 - from your terminal type in git clone { repo here }
 
 ```
-git clone { git clone link from the code button }
+git clone https://github.com/dcouch440/antique_chat_socket.git
 ```
 
 - then change directories to the downloaded repo
 
 ```
-  cd { directory name here }
+  cd antique_chat_socket
 ```
 
 - open the project by typing
@@ -46,3 +47,15 @@ git clone { git clone link from the code button }
 ```
 code .
 ```
+  
+From here you can view the project!
+  
+#### `Zip`
+  
+- click the green "code" button
+  
+- click Download ZIP
+  
+##### `Drop in?`
+- most code editors let you drop in the folder!
+- open your code editor and drop the folder in!
