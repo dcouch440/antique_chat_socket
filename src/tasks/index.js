@@ -15,7 +15,7 @@ const getUsersFromDB = async usernames => {
   }
 };
 
-const socketMapper = ({ rooms, io }) => rooms.map(data => {
+const socketMapper = ({ io, rooms }) => rooms.map(data => {
   const { id, ...rest } = data;
   return {
     roomId: id,
