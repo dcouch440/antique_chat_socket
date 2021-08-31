@@ -1,4 +1,4 @@
-module.exports = user_id => {
+const avatarPublicId = user_id => {
   const env = process.env.NODE_ENV;
   if (env === 'test') {
     return `_TEST_AVATAR_${user_id}_`;
@@ -10,3 +10,4 @@ module.exports = user_id => {
     return `__AVATAR_${user_id}__`;
   }
 };
+module.exports = avatarPublicId;
