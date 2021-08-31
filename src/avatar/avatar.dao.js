@@ -8,6 +8,17 @@ class AvatarDAO {
       `public_id=${avatarPublicId}`
     ).execute();
   }
+  findByIds (ids) {
+    const avatarPublicId = ids.map(id => avatarPublicIdFormat(id));
+    return new Promise((resolve, reject) => {
+      cloudinary.api.resources_by_ids(
+        avatarPublicId, (error, results) => {
+          resolve(results);
+          reject(error);
+        }
+      );
+    });
+  }
 }
 
 module.exports = new AvatarDAO();
