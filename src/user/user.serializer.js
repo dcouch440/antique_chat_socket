@@ -12,13 +12,13 @@ class UserSerializer {
   }
   async attachAvatarToUsers (users) {
     /**
-     * this method finds all the users avatars by their ids
-     * users[] are mapped through to retrieve their id
-     * a for-in style query is made to the cloud to retrieve the ids
-     * the response is checked for null value and returns [] incase
-     * users[] are mapped through to create the return object
-     * the response is mapped through to find the public_id that matches the users name
-     * we use the avatarPublicId function to attach a default avatar if one does not exist
+     * this method finds all the users avatars by their ids.
+     * users[] are mapped through to retrieve their id.
+     * a for-in style query is made to the cloud to retrieve the ids.
+     * the response is checked for null value and returns [] incase.
+     * users[] are mapped through to create the return object.
+     * the response is mapped through to find the public_id that matches the users name.
+     * we use the avatarPublicId function to attach a default avatar if one does not exist.
      * user data is formed and returned
      */
     const usersIds = users.map(user => user.id);
