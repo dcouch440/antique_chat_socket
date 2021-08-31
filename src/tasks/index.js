@@ -9,7 +9,7 @@ const getUsersFromDB = async usernames => {
       return;
     }
     const users = await userService.getUsersByUsername({ usernames });
-    return userSerializer.serializeWithUserAvatar(users);
+    return userSerializer.serializeWithUsersAvatars(users);
   } catch (err) {
     console.error(err);
   }
@@ -36,8 +36,7 @@ const getActiveUserRooms = async ({ io, user_id }) => {
   try {
     const antique_ids = await AntiqueService.getUserAntiques(user_id);
     const userAntiqueRoomData = socketMapper({ rooms: antique_ids, io });
-    const activeRooms = userAntiqueRoomData
-      .filter(data => data.socketUsers !== undefined);
+    const activeRooms = userAntiqueRoomData.filter(data => data.socketUsers !== undefined);
     const antiqueOwnersVacantRooms = getUserRoomCountWithSet({ activeRooms });
     const sortedRooms = antiqueOwnersVacantRooms.sort((a,b) => b.socketUsers - a.socketUsers);
     return sortedRooms;
@@ -65,7 +64,6 @@ const getRoomUsernames = ({ io, roomId }) => {
   });
   return usernames;
 };
-
 
 const messageWithAttachedUser = async ({ message, username }) => {
   try {
