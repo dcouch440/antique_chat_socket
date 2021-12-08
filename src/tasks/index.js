@@ -46,8 +46,7 @@ const getActiveUserRooms = async ({ io, user_id }) => {
 };
 
 const getUserRoomCountWithSet = ({ activeRooms }) => {
-  const set = new Set(activeRooms);
-  return [...set].map(({ socketUsers, ...rest }) => {
+  return activeRooms.map(({ socketUsers, ...rest }) => {
     const userUndefinedConverter = socketUsers ? [...socketUsers].length : 0;
     return {
       ...rest,
@@ -57,9 +56,8 @@ const getUserRoomCountWithSet = ({ activeRooms }) => {
 };
 
 const getRoomUsernames = ({ io, roomId }) => {
-  const clients = io.sockets.adapter.rooms.get(roomId);
-  const set = new Set(clients);
-  const usernames = [...set].map(clientId => {
+  const clients = io.sockets.adapter.rooms.get(roomId) ?? [];
+  const usernames = [...clients].map(clientId => {
     return io.sockets.sockets.get(clientId).username;
   });
   return usernames;
@@ -68,13 +66,12 @@ const getRoomUsernames = ({ io, roomId }) => {
 const messageWithAttachedUser = async ({ message, username }) => {
   try {
     const user = await userService.getUserByUsername(username);
-    const avatar = await userSerializer.serializeWithUserAvatar(user);
     return {
       message: {
         message,
         timeStamp: new Date(),
         username: user.username,
-        ...avatar
+        ...user
       }
     };
   } catch (err) {

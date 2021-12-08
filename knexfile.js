@@ -4,7 +4,7 @@ module.exports = {
   development: {
     client: 'postgresql',
     connection: {
-      database:process.env.DB_NAME,
+      database: 'node_ant_test_3',
       user:process.env.PG_USER,
       password:process.env.PG_PASS,
     },
