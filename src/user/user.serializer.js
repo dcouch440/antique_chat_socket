@@ -22,7 +22,7 @@ class UserSerializer {
      * user data is formed and returned
      */
     const usersIds = users.map(user => user.id);
-    const response = await this.getAvatarsAndVerify(usersIds);
+    const response = await avatarService.getAvatarsByUserIds(usersIds);
     const usersWithAttachedAvatars = response?.resources ?? [];
     return users.map(user => {
       const [avatar] = usersWithAttachedAvatars
