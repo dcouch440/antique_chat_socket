@@ -20,11 +20,11 @@ const {
   SHOW_ROOM_USER_COUNT
 } = require('./events');
 
+console.log(corsConfig);
+
 const io = require('socket.io')(server, { cors: corsConfig });
 
 io.on(CONNECTION, async socket => {
-  socket.emit(CONNECTION, 'connected to chat');
-
   socket.on(JOIN_ROOM, async ({ roomId, ...currentUser }) => {
     try {
       if (!roomId) {
