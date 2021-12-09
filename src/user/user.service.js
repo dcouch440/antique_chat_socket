@@ -1,4 +1,3 @@
-const getAvatarIfNoPresent = require('../../lib/get-avatar-if-no-present');
 const userDAO = require('./user.dao');
 
 class UserService {
@@ -11,9 +10,7 @@ class UserService {
   }
   async getUserByUsername (username) {
     try {
-      const user = await userDAO.getUserByUsername(username);
-      const { avatar } = getAvatarIfNoPresent(user);
-      return { username: user.username, id: user.id, avatar };
+      return await userDAO.getUserByUsername(username);
     } catch (err) {
       console.error(err);
     }

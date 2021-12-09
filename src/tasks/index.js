@@ -1,15 +1,13 @@
 const userService = require('../user/user.service');
 const AntiqueService = require('../antique/antique.service');
 const STATIC_ROOMS = require('../../lib/static-rooms');
-const userSerializer = require('../../src/user/user.serializer');
 
 const getUsersFromDB = async usernames => {
   try {
     if (!usernames.length) {
       return;
     }
-    const users = await userService.getUsersByUsername({ usernames });
-    return userSerializer.serializeWithUsersAvatars(users);
+    return await userService.getUsersByUsername({ usernames });
   } catch (err) {
     console.error(err);
   }
